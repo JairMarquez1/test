@@ -1,0 +1,11 @@
+.header{
+    min-height: 80px;
+    max-height: 80px;
+    background-color: rgb(5, 40, 79);
+}
+
+.content{
+    padding: 10px 50px;
+    height: calc(90vh - 80px);
+    background-color: rgb(219, 219, 219) ;
+}
