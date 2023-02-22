@@ -1,10 +1,12 @@
 html{
     background: url('https://wallpapers.com/images/hd/minimalist-purple-sky-and-mountain-ex4suuw5xd4funov.jpg');
+    height: 100%;
 }
 
 body{
     max-width: 700px;
-    margin: auto;
+    height: 100%;
+    margin: 0px auto;
 }
 
 .header{
@@ -80,4 +82,10 @@ p{
     border-radius: 5px;
     padding: 7px 20px 9px 16px;
     max-width: 70%;
+}
+
+@media (max-width: 700px) {
+    html{
+        background: rgb(219, 219, 219) ;
+    }
 }
