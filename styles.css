@@ -1,11 +1,83 @@
+html{
+    background: url('https://wallpapers.com/images/hd/minimalist-purple-sky-and-mountain-ex4suuw5xd4funov.jpg');
+}
+
+body{
+    max-width: 700px;
+    margin: auto;
+}
+
 .header{
-    min-height: 80px;
-    max-height: 80px;
+    min-height: 64px;
+    max-height: 64px;
     background-color: rgb(5, 40, 79);
 }
 
-.content{
-    padding: 10px 50px;
-    height: calc(90vh - 80px);
+.messages{
+    padding: 10px 20px;
+    height: calc(90vh - 64px);
     background-color: rgb(219, 219, 219) ;
+    overflow-y: scroll;
+}
+
+p{
+    margin: 0;
+}
+
+.footer{
+    height: 10vh;
+    background-color: rgb(219, 219, 219) ;
+    box-shadow: 1px 4px 18px #ababab;
+    position: sticky;
+    z-index: auto;
+    padding-top: 5px;
+}
+
+.message-input{
+    width: 85%;
+    height: 10px;
+}
+
+.restart-btn{
+    filter: invert(1);
+    margin: 20px;
+}
+
+.btn-primary{
+    background-color: rgb(5, 40, 79);
+    border-color: rgb(5, 40, 79);
+}
+
+
+.client-message{
+    min-width: 100%;
+    display: flex;
+    justify-content: end;
+    margin-top: 10px;
+}
+
+.client-message p{
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: rgb(228 50 94);
+    border-radius: 5px;
+    padding: 7px 20px 9px 16px;
+    max-width: 70%;
+}
+
+.bot-message{
+    min-width: 100%;
+    display: flex;
+    justify-content: start;
+    margin-top: 10px;
+}
+
+.bot-message p{
+    font-size: 16px;
+    font-weight: bold;
+    background-color: aquamarine;
+    border-radius: 5px;
+    padding: 7px 20px 9px 16px;
+    max-width: 70%;
 }
