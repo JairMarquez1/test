@@ -12,7 +12,7 @@ function sendMessage(texto){
     updateChat(texto,0)
     conversacion += '\nCliente: ' + texto + '\nBot: ';
     console.log(conversacion)
-    fetch('http://localhost:3000/reply', {
+    fetch('http://54.167.124.92:3000/reply', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
