@@ -15,7 +15,7 @@ body{
 
 .messages{
     padding: 10px 20px;
-    height: calc(90vh - 64px);
+    height: calc(90% - 64px);
     background-color: rgb(219, 219, 219) ;
     overflow-y: scroll;
 }
@@ -25,7 +25,7 @@ p{
 }
 
 .footer{
-    height: 10vh;
+    height: 10%;
     background-color: rgb(219, 219, 219) ;
     box-shadow: 1px 4px 18px #ababab;
     position: sticky;
