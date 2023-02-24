@@ -21,7 +21,7 @@ function sendMessage(texto){
     updateChat(texto,0)
     conversacion += '\nCliente: ' + texto + '\nBot: ';
     console.log(conversacion)
-    fetch('http://scriptbox.win:443/reply', { //54.167.124.92
+    fetch('http://54.167.124.92:443/reply', { //54.167.124.92
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
