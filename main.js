@@ -21,7 +21,7 @@ function sendMessage(texto){
     updateChat(texto,0)
     conversacion += '\nCliente: ' + texto + '\nBot: ';
     console.log(conversacion)
-    fetch('http://54.167.124.92:443/reply', {
+    fetch('http://scriptbox.win:443/reply', { //54.167.124.92
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -34,8 +34,6 @@ function sendMessage(texto){
         .then(function(json) {
             console.log(json)
             conversacion += json.resp
-            console.log(conversacion)
-            console.log(json.costo)
             updateChat(json.resp,1)
             localStorage.setItem('chat', conversacion)
         });
