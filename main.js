@@ -62,7 +62,7 @@ function displayChat(chat){
 }
 
 function restart(){
-    if (confirm("¿Desear reiniciar la conversación?")){
+    if (confirm("¿Deseas reiniciar la conversación?")){
         localStorage.removeItem('chat')
         conversacion = 'Bot: Hola, ¿en que puedo ayudarte?'
         document.getElementById('messages').innerHTML = ''
