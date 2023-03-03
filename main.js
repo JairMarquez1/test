@@ -1,27 +1,16 @@
-var time = "Buenos dias"
-
 function start(){   
-    var today = new Date()
-    var curHr = today.getHours()
-    if (curHr < 12)
-        time = "Buenos dias"
-    else if (curHr < 20)
-        time = "Buenas tardes"
-    else 
-        time = "Buenas noches"
-
     if(localStorage.getItem('chat') === null)
-        conversacion = 'Bot: Hola, ¿en que puedo ayudarte?'
+        conversacion = '{"role":"assistant", "content":"Hola, ¿en que puedo ayudarte?"},\n'
     else
         conversacion = localStorage.getItem('chat'); 
-    displayChat(conversacion.split('\n'));
+    displayChat(conversacion.split(',\n'));
 }
 
 function sendMessage(texto){
     updateChat(texto,0)
-    conversacion += '\nCliente: ' + texto + '\nBot: ';
+    conversacion += '{"role":"user", "content":"'+ texto + '"},\n';
     console.log(conversacion)
-    fetch('http://54.167.124.92:443/reply', { //54.167.124.92
+    fetch('http://localhost:443/reply', { //54.167.124.92
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
@@ -33,30 +22,33 @@ function sendMessage(texto){
         })
         .then(function(json) {
             console.log(json)
-            conversacion += json.resp
-            updateChat(json.resp,1)
+            mystr = (JSON.stringify(json) + ",")
+            conversacion += (mystr + "\n")
+            updateChat(json.content,1)
             localStorage.setItem('chat', conversacion)
         });
     document.getElementById('msg-input').value = ""
 }
 
 function updateChat(msg, user){
-    msg = msg.replaceAll('Hola, ¿en que puedo ayudarte?', `${time}, ¿en que puedo ayudarte?`)
-    msg = msg.replaceAll(/\{ubicaci.n\}/g, 'Calle de la Noche 2440, Guadalajara, Jalisco 44520, MX')
+    //msg = msg.replaceAll('Hola, ¿en que puedo ayudarte?', `${time}, ¿en que puedo ayudarte?`)
+    //msg = msg.replaceAll(/\{ubicaci.n\}/g, 'Calle de la Noche 2440, Guadalajara, Jalisco 44520, MX')
     if (user === 0){
     document.getElementById('messages').innerHTML+= 
-        `<div class='client-message'><p>${msg}</p></div>`
+        `<div class='client-message'><p>${msg.replaceAll('\n','<br>')}</p></div>`
     }
     else{
         document.getElementById('messages').innerHTML+= 
-        `<div class='bot-message'><p>${msg}</p></div>`
+        `<div class='bot-message'><p>${msg.replaceAll('\n','<br>')}</p></div>`
     }
 }
 
 function displayChat(chat){
-    chat.forEach(msg => {
-        text = msg.substring(msg.indexOf(":") + 2);
-        user = msg[0].toLowerCase()==='c'?0:1
+    console.log(chat)
+    chat.slice(0, -1).forEach(msg => {
+        msg = JSON.parse(msg)
+        text = msg.content
+        user = msg.role==='user'?0:1
         updateChat(text,user)
     });
 }
@@ -64,9 +56,9 @@ function displayChat(chat){
 function restart(){
     if (confirm("¿Deseas reiniciar la conversación?")){
         localStorage.removeItem('chat')
-        conversacion = 'Bot: Hola, ¿en que puedo ayudarte?'
+        conversacion = '{"role":"assistant", "content":"Hola, ¿en que puedo ayudarte?"},\n'
         document.getElementById('messages').innerHTML = ''
-        displayChat(conversacion.split('\n'));
+        displayChat(conversacion.split(',\n'));
     }
 }
 
