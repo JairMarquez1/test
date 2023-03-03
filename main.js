@@ -10,7 +10,7 @@ function sendMessage(texto){
     updateChat(texto,0)
     conversacion += '{"role":"user", "content":"'+ texto + '"},\n';
     console.log(conversacion)
-    fetch('http://localhost:443/reply', { //54.167.124.92
+    fetch('https://scriptbox.win:443/reply', { //54.167.124.92
         method: 'POST',
         headers: {
             'Content-Type': 'application/json'
