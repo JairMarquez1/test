@@ -15,7 +15,7 @@ function sendMessage(texto){
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ 'msg': conversacion })
+        body: JSON.stringify({ 'msg': texto })
     })
         .then(function(response) {
             return response.json();
@@ -31,8 +31,6 @@ function sendMessage(texto){
 }
 
 function updateChat(msg, user){
-    //msg = msg.replaceAll('Hola, ¿en que puedo ayudarte?', `${time}, ¿en que puedo ayudarte?`)
-    //msg = msg.replaceAll(/\{ubicaci.n\}/g, 'Calle de la Noche 2440, Guadalajara, Jalisco 44520, MX')
     if (user === 0){
     document.getElementById('messages').innerHTML+= 
         `<div class='client-message'><p>${msg.replaceAll('\n','<br>')}</p></div>`
